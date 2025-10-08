@@ -40,7 +40,7 @@ else
     });
     let token = jwt.sign({email:email,userid:createduser._id},"shhh");
     res.cookie("token",token);
-    res.redirect("/login");
+    res.redirect("/profile");
 })
 });
     }
