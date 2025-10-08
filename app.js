@@ -69,7 +69,10 @@ res.redirect("/profile");
 app.get('/edit/:id',isLoggedIn,async(req,res)=>{
     let post = await postModel.findOne({_id:req.params.id}).populate("user");
 res.render("edit",{post});
-
+})
+app.get('/delete/:id',isLoggedIn,async(req,res)=>{
+    let post = await postModel.findOneAndDelete({_id:req.params.id});
+res.redirect('/profile');
 })
 app.post('/post',isLoggedIn,async(req,res)=>{
 let user = await userModel.findOne({email:req.user.email});
